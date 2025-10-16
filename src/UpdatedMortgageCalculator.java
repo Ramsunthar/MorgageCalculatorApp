@@ -6,27 +6,33 @@ public class UpdatedMortgageCalculator {
     final static byte MONTHS_IN_YEAR = 12;
     final static byte PERCENT = 100;
 
+    //5 lines of main method
     public static void main(String[] args) {
-
-
         int principal = (int)readNumber("Principal ($1K - $1M)", 1000, 1_000_000);
         float annualInterest = (float) readNumber("Annual Interest Rate", 0, 30);
         byte years = (byte) readNumber("Period (Years)",0,30);
 
+        printMortgage(principal, annualInterest, years);
+        printPaymentSchedule(years, principal, annualInterest);
+    }
+
+    private static void printPaymentSchedule(byte years, int principal, float annualInterest) {
+        System.out.println();
+        System.out.println("PAYMENT SCHEDULE");
+        System.out.println("----------------");
+        for(short month = 1; month <= years * MONTHS_IN_YEAR; month ++) {
+            double balance = calculateBalance(principal, annualInterest, years, month);
+            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
+        }
+    }
+
+    private static void printMortgage(int principal, float annualInterest, byte years) {
         double mortgage = calculateMortgage(principal, annualInterest, years);
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);//New Stuff
         System.out.println();
         System.out.println("MORTGAGE");
         System.out.println("--------");
         System.out.println("Mortgage: " + mortgageFormatted);
-
-        System.out.println();
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("----------------");
-        for(short month = 1 ; month <= years* MONTHS_IN_YEAR; month ++) {
-            double balance = calculateBalance(principal, annualInterest, years, month);
-            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
-        }
     }
 
     //Reading input and check the value  - common pattern function
