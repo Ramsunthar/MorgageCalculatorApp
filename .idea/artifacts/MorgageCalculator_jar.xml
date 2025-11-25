@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MorgageCalculator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MorgageCalculator_jar</output-path>
+    <root id="archive" name="MorgageCalculator.jar">
+      <element id="module-output" name="MorgageCalculator" />
+    </root>
+  </artifact>
+</component>
