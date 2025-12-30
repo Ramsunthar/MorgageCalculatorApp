@@ -1,3 +1,5 @@
+package com.java;
+
 import java.text.NumberFormat;
 import java.util.Scanner;
 /*
@@ -5,7 +7,7 @@ import java.util.Scanner;
 * 1. extracting method and make it a reusable unit
 * 2. refactoring the code by finding repetitive patterns in the whole code and make it is a template function.
 * */
-public class MortgageCalculatorV3 {
+public class  MortgageCalculatorV3 {
     public static void main(String[] args) {
 
         int principal = (int)readNumber("Principal ($1K - $1M)", 1000, 1_000_000);

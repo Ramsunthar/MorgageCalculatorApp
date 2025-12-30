@@ -1,5 +1,6 @@
+package com.java;
+
 import java.text.NumberFormat;
-import java.util.Scanner;
 
 public class UpdatedMortgageCalculator {
     //Class level
@@ -8,9 +9,9 @@ public class UpdatedMortgageCalculator {
 
     //5 lines of main method
     public static void main(String[] args) {
-        int principal = (int)readNumber("Principal ($1K - $1M)", 1000, 1_000_000);
-        float annualInterest = (float) readNumber("Annual Interest Rate", 0, 30);
-        byte years = (byte) readNumber("Period (Years)",0,30);
+        int principal = (int) Console.readNumber("Principal ($1K - $1M)", 1000, 1_000_000);
+        float annualInterest = (float) Console.readNumber("Annual Interest Rate", 0, 30);
+        byte years = (byte) Console.readNumber("Period (Years)",0,30);
 
         printMortgage(principal, annualInterest, years);
         printPaymentSchedule(years, principal, annualInterest);
@@ -33,23 +34,6 @@ public class UpdatedMortgageCalculator {
         System.out.println("MORTGAGE");
         System.out.println("--------");
         System.out.println("Mortgage: " + mortgageFormatted);
-    }
-
-    //Reading input and check the value  - common pattern function
-    public static double readNumber (String prompt, double min, double max) {
-        Scanner scanner = new Scanner(System.in);
-        double value;
-        while(true) {
-            System.out.print(prompt+": ");
-            value = scanner.nextDouble();
-            if(value>=min && value <= max) {
-                break;
-            }
-            else {
-                System.out.println("Enter the value between" + min + "and "+ max);
-            }
-        }
-        return value;
     }
 
     //Mortgage Calculating function - making it easy for reusable
