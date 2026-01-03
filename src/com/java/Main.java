@@ -1,32 +1,19 @@
 package com.java;
 
-import java.text.NumberFormat;
-import java.util.Scanner;
-
 public class Main {
+    //Class level
+    final static byte MONTHS_IN_YEAR = 12;
+    final static byte PERCENT = 100;
 
+    //5 lines of main method
     public static void main(String[] args) {
-        final byte MONTHS_IN_YEAR = 12;
-        final byte PERCENT = 100;
+        int principal = (int) Console.readNumber("Principal ($1K - $1M)", 1000, 1_000_000);
+        float annualInterest = (float) Console.readNumber("Annual Interest Rate", 0, 30);
+        byte years = (byte) Console.readNumber("Period (Years)",0,30);
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Principal: ");
-        int principal = scanner.nextInt();
-
-        System.out.print("Annual Interest Rate: ");
-        float annualInterest = scanner.nextFloat();
-        float monthlyInterest = annualInterest/ PERCENT/ MONTHS_IN_YEAR;
-
-        System.out.print("Period (Years) :");
-        byte years = scanner.nextByte();
-        int numberOfPayments = years * MONTHS_IN_YEAR;
-
-        //Mortgage Calculating Formula Application
-        double mortgage = principal * (monthlyInterest * Math.pow(1 + monthlyInterest,numberOfPayments))/
-                (Math.pow(1+monthlyInterest, numberOfPayments) - 1);
-
-        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);//New Stuff
-        System.out.println("Mortgage: " + mortgageFormatted);
+        MorgageReport.printMortgage(principal, annualInterest, years);
+        MorgageReport.printPaymentSchedule(years, principal, annualInterest);
     }
+
+
 }

@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-com.java.Main-Class: com.java.UpdatedMortgageCalculator
+MortgageCalculatorV1-Class: com.java.Main
 
